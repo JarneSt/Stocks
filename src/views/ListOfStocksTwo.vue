@@ -1,15 +1,15 @@
 <template>
 <div>
-  <USStocks/>
+  <ListOfEUStocks/>
 </div>
 </template>
 
 <script>
-import USStocks from "../components/USStocks";
 import EUStocks from "../components/EUStocks";
+import ListOfEUStocks from "../components/ListOfEUStocks";
 export default {
-  name: "Home",
-  components: {EUStocks, USStocks}
+  name: "ListOfStocksTwo",
+  components: {ListOfEUStocks, EUStocks}
 }
 </script>
 

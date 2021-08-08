@@ -1,13 +1,18 @@
 <template>
 <div>
-  <h1>US STOCKS</h1>
+  <h1>STOCKS</h1>
   <input style="text-transform:uppercase; text-align: center" type="text" placeholder="STOCK" maxlength="4" autocapitalize="characters" v-model="stockname" @input="emptyAll">
   <input type="button" value="Search" @click="showStockInfo">
 
 
   <div class="p-5 mt-3 border w-50 m-auto border-dark articles" v-if="stockNews.length > 0">
-    <h1>{{stockname.toUpperCase()}} (${{stockPrice}})</h1>
-    <a v-if="stockNews.length > 0" :href="`https://www.tradingview.com/symbols/NASDAQ-${stockname.toUpperCase()}/`" target="_blank">{{stockname.toUpperCase()}} Chart</a>
+    <h1>{{stockname.toUpperCase()}} <div v-if="stockPrice > 0">(${{stockPrice}})</div></h1>
+    <div v-if="allStockData.data.symbol.includes(stockname.toUpperCase())">
+      <a v-if="stockNews.length > 0" :href="`https://www.tradingview.com/symbols/NASDAQ-${stockname.toUpperCase()}/`" target="_blank">{{stockname.toUpperCase()}} Chart</a>
+    </div>
+    <div v-else>
+      <a v-if="stockNews.length > 0" :href="`https://www.tradingview.com/symbols/EURONEXT-${stockname.toUpperCase()}/`" target="_blank">{{stockname.toUpperCase()}} Chart</a>
+    </div>
   </div>
 
   <div v-if="stockNews.length > 0" class="p-20 mt-5 mb-5">
