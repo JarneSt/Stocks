@@ -1,13 +1,12 @@
 <template>
   <div class="filter p-4">
-    <!--TODO: Make a filter so user can filter between types. Use a select box. (First load in all unique types into the select box) -->
     <div class="mb-4">
       <h3>Search on name</h3>
-      <input v-model="searchedName">
+      <input class="form-control w-50 m-auto" v-model="searchedName">
     </div>
     <div class="mt-3">
       <h3>Select a type</h3>
-      <select v-model="selectedType">
+      <select class="form-select w-50 m-auto" v-model="selectedType">
         <option v-for="type in allTypes">{{type}}</option>
       </select>
     </div>
@@ -15,8 +14,6 @@
 <div v-if="allStockData.length > 0" >
   <h1 class="p-4">All Stocks ({{ filteredStocks.length }})</h1>
   <div class="d-flex flex-wrap">
-
-
     <ul class="text-decoration-none list-unstyled w-50"
         v-for="stock in filteredStocks" v-if="filteredStocks.length > 0 && selectedType === ''">
       <div class="col border p-3">
@@ -86,7 +83,6 @@ export default {
       if (!this.selectedType) {
         return this.allStockData;
       } else {
-        console.log('wtf');
         return this.allStockData.filter(stockArr =>
             (stockArr.type.toLowerCase()).includes(this.selectedType.toLowerCase())
         );
@@ -133,9 +129,6 @@ export default {
           tempArray.push(stock.name);
         }
         this.allStockNames = tempArray;
-        console.log("allStockNames",this.allStockNames)
-        console.log("allStockData Array",this.allStockData);
-        console.log("allTypes Array",this.allTypes);
 
         this.showLoadingScreen = false;
       })

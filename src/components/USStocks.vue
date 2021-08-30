@@ -1,8 +1,10 @@
 <template>
 <div>
   <h1>STOCKS</h1>
-  <input style="text-transform:uppercase; text-align: center" type="text" placeholder="STOCK" maxlength="4" autocapitalize="characters" v-model="stockname" @input="emptyAll">
-  <input type="button" value="Search" @click="showStockInfo">
+  <div class="w-50 m-auto">
+    <input class="form-control" style="text-transform:uppercase; text-align: center" type="text" placeholder="STOCK" maxlength="4" autocapitalize="characters" v-model="stockname" @input="emptyAll">
+    <input type="button" class="form-control" value="Search" @click="showStockInfo">
+  </div>
 
 
   <div class="p-5 mt-3 border w-50 m-auto border-dark articles" v-if="stockNews.length > 0">
@@ -70,6 +72,7 @@ export default {
         this.fetchPrice();
         this.fetchNews();
         this.showLoadingGif = false;
+        console.log(this.allStockData);
       }
     },
     fetchPrice(){
